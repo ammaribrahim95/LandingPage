@@ -85,4 +85,23 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     `;
     document.head.appendChild(styleSheet);
+
+    // Booking Form Handler
+    const bookingForm = document.getElementById('booking-form');
+    if (bookingForm) {
+        bookingForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const name = document.getElementById('owner-name').value;
+            const petType = document.getElementById('pet-type').value;
+            const petAge = document.getElementById('pet-age').value;
+            const service = document.getElementById('service-type').value;
+            const message = document.getElementById('message').value;
+
+            const text = `Hi Klinik Haiwan, I would like to book an appointment.%0A%0A*Name:* ${name}%0A*Pet:* ${petType} (${petAge})%0A*Service:* ${service}%0A*Message:* ${message}`;
+
+            const whatsappUrl = `https://wa.me/60127953577?text=${text}`;
+            window.open(whatsappUrl, '_blank');
+        });
+    }
 });
